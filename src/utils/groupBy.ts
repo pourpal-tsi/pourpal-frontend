@@ -1,11 +1,10 @@
 export const groupBy = (array, key) => {
-    return array.reduce((acc, item) => {
-        const groupKey = item[key];
+  return array.reduce((acc, item) => {
+    const groupKey = item[key];
 
-        if (!acc[groupKey])
-            acc[groupKey] = [];
+    if (!acc[groupKey]) acc[groupKey] = [];
 
-        acc[groupKey].push(item);
-        return acc;
-    }, {});
+    acc[groupKey].push(item);
+    return acc;
+  }, {});
 };

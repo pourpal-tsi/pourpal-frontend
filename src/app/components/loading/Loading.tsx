@@ -1,16 +1,10 @@
 import classNames from "classnames";
 
 interface LoadingProps {
-    className?: string;
+  className?: string;
 }
 
-export default function Loading<LoadingProps>({className = ''}) {
-    const classes = classNames(
-        'loading loading-spinner loading-sm',
-        className
-    );
-
-    return (
-        <span className={classes}></span>
-    );
+export default function Loading({ className = "" }: LoadingProps) {
+  const classes = classNames("loading loading-spinner loading-sm", className);
+  return <span className={classes}></span>;
 }
