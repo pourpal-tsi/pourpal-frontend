@@ -2,7 +2,7 @@
 
 import classNames from "classnames";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import Loading from "@/app/components/loading/Loading";
 
 interface SearchFieldProps {
@@ -13,17 +13,21 @@ export default function SearchField({ className }: SearchFieldProps) {
   const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
 
-  const classes = classNames(
-    "input input-bordered flex items-center gap-2 input-primary focus:ring-0",
-    className,
-  );
-
+  /* Reset the state of the query after page switching */
   useEffect(() => {
+    setQuery(searchParams.get("title") || "");
+  }, [searchParams, pathname]);
+
+  /* Trigger the search after 500ms of inactivity */
+  useEffect(() => {
+    if (query === searchParams.get("title")) return; // Prevent redundant requests
+
     const handler = setTimeout(() => {
       setLoading(false);
-      if (query.trim()) router.push(`/?title=${query}`);
-      else router.push(`/`);
+      router.push(query.trim() ? `/?title=${query}` : `/`);
     }, 500);
 
     setLoading(true);
@@ -32,7 +36,12 @@ export default function SearchField({ className }: SearchFieldProps) {
       clearTimeout(handler);
       setLoading(false);
     };
-  }, [query, router]);
+  }, [query, router, searchParams]);
+
+  const classes = classNames(
+    "input input-bordered flex items-center gap-2 input-primary focus:ring-0",
+    className
+  );
 
   return (
     <>

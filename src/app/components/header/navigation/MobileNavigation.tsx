@@ -1,6 +1,4 @@
 import { ReactNode } from "react";
-import User from "@/app/components/header/User";
-import Image from "next/image";
 
 export default function MobileNavigation({children}: ReactNode) {
   return (
