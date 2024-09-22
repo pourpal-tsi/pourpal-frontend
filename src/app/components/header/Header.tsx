@@ -1,6 +1,7 @@
 import ShoppingCart from "@/app/components/header/ShoppingCart";
 import User from "@/app/components/header/User";
 import Link from "next/link";
+import MobileNavigation from "@/app/components/header/navigation/MobileNavigation";
 
 export default function Header() {
   return (
@@ -10,10 +11,20 @@ export default function Header() {
           PourPal
         </Link>
       </div>
-      <nav className="flex-none">
+
+      {/* Desktop */}
+      <nav className="flex-none hidden md:flex">
         <ShoppingCart />
         <User />
       </nav>
+
+      {/* Mobile */}
+      <MobileNavigation>
+        <li><a>Profile</a></li>
+        <li><a>Settings</a></li>
+        <li><a>Logout</a></li>
+        <li><a>Shopping Cart</a></li>
+      </MobileNavigation>
     </header>
   );
 }

@@ -46,8 +46,8 @@ export default async function HomeCatalogue({ searchParams }: Params) {
           ) : (
             Object.keys(groupedItems).map((type) => (
               <div key={type} className="mb-10">
-                <h2 className="mb-6 text-2xl font-semibold">{type}</h2>
-                <div className="flex flex-wrap gap-4">
+                <h2 className="text-center md:text-start mb-6 text-2xl font-semibold">{type}</h2>
+                <div className="justify-center md:justify-start flex flex-wrap gap-4">
                   {groupedItems[type].map((item) => (
                     <ItemCard key={item.id} item={item} />
                   ))}
