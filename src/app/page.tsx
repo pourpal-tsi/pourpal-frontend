@@ -27,9 +27,14 @@ export default async function HomeCatalogue({ searchParams }: Params) {
 
   return (
     <main className="min-h-screen bg-base-200 flex justify-center">
+      <aside className="xl:block hidden w-72 pr-8 mt-[17rem]">
+        <div className="sticky top-32 bg-white p-5 shadow-xl rounded-xl">
+          <BeverageFilter />
+        </div>
+      </aside>
       <section className="py-10">
-        <h1 className="pb-10 text-center lg:text-5xl text-4xl font-bold">PourPal Catalogue</h1>
-        <SearchField className="mb-8" />
+        <h1 className="heading-1">PourPal Catalogue</h1>
+        <SearchField className="mb-8 lg:w-[970px] md:w-[640px]" />
         <ItemList items={items} searchTitle={title} />
       </section>
     </main>

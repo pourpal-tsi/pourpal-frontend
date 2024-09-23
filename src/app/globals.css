@@ -10,4 +10,15 @@
 }
 */
 
+.heading-1 {
+    @apply pb-10 text-center lg:text-5xl text-4xl font-bold;
+}
+
+.heading-2 {
+    @apply pb-6 text-3xl lg:text-4xl font-semibold;
+}
+
+.heading-3 {
+    @apply pb-2 text-2xl lg:text-3xl font-semibold;
+}
 

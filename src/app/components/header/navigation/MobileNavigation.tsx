@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-export default function MobileNavigation({children}: ReactNode) {
+export default function MobileNavigation({ children }: ReactNode) {
   return (
     <nav className="md:hidden">
       <div className="drawer drawer-end">

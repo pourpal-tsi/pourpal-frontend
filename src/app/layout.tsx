@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/app/components/header/Header";
 import Footer from "@/app/components/footer/Footer";
+import { ReactNode } from "react";
 
 export const metadata: Metadata = {
   title: "PourPal",
@@ -25,23 +26,23 @@ export const metadata: Metadata = {
     "whiskey",
     "vodka",
     "gin",
-    "wine delivery",
+    "wine delivery"
   ],
   authors: [
-    { name: "PourPal", url: "https://www.youtube.com/watch?v=mHrtsCGR8yk" },
-  ],
+    { name: "PourPal", url: "https://www.youtube.com/watch?v=mHrtsCGR8yk" }
+  ]
 };
 
 export default function RootLayout({
-  children,
-}: Readonly<{ children: React.ReactNode }>) {
+                                     children
+                                   }: Readonly<{ children: ReactNode }>) {
   return (
     <html lang="en" data-theme="light">
-      <body className="bg-gray-200">
-        <Header />
-        {children}
-        <Footer />
-      </body>
+    <body className="bg-gray-200">
+    <Header />
+    {children}
+    <Footer />
+    </body>
     </html>
   );
 }

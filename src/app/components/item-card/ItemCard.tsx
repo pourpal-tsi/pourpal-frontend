@@ -14,7 +14,8 @@ interface ItemProps {
 export default function ItemCard({ item }: ItemProps) {
   return (
     <div className="card w-[19.2rem] bg-base-100 shadow-xl">
-      <figure className="relative h-52 overflow-hidden grayscale-[60%] transition-all duration-300 hover:grayscale-0">
+      <figure
+        className="relative h-[15rem] overflow-hidden grayscale-[60%] transition-all duration-300 hover:grayscale-0">
         <Image
           className="cursor-pointer object-cover"
           src={item.image}
