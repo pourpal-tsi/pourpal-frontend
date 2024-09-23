@@ -7,14 +7,14 @@ export default function RangeSlider() {
   const maxValueRef = useRef(1000);
 
   const handleMinChange = (event) => {
-    const value = Math.min(event.target.value, maxValueRef.current - 10);
+    const value = Math.min(event.target.value, maxValueRef.current - STEP);
     minValueRef.current = value;
     document.getElementById("minValueDisplay").innerText = `${value} Eur`;
     event.target.value = value;
   };
 
   const handleMaxChange = (event) => {
-    const value = Math.max(event.target.value, parseInt(minValueRef.current) + 10);
+    const value = Math.max(event.target.value, parseInt(minValueRef.current) + STEP);
     maxValueRef.current = value;
     document.getElementById("maxValueDisplay").innerText = `${value} Eur`;
     event.target.value = value;
@@ -36,7 +36,7 @@ export default function RangeSlider() {
           className="range range-primary"
           min="0"
           max="1000"
-          step="10"
+          step={STEP}
         />
       </label>
       <label htmlFor="max" className="block">
@@ -53,7 +53,7 @@ export default function RangeSlider() {
           className="range range-primary"
           min="0"
           max="1000"
-          step="10"
+          step={STEP}
         />
       </label>
     </div>
