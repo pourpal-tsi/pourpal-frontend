@@ -1,16 +1,16 @@
-import ItemCard from "@/app/components/item-card/ItemCard";
-import { groupBy } from "@/utils/groupBy";
 import SearchField from "@/app/components/search/SearchField";
+import ItemList from "@/app/components/item-card/ItemList";
+import BeverageFilter from "@/app/components/search/BeverageFilter";
 
 const fetchItems = async (title = "") => {
   const res = await fetch("http://localhost:3000/api/items", {
-    cache: "no-cache",
+    cache: "no-cache"
   });
   const data = await res.json();
 
   if (title)
     return data.filter((item) =>
-      item.title.toLowerCase().includes(title.toLowerCase()),
+      item.title.toLowerCase().includes(title.toLowerCase())
     );
   return data;
 };
@@ -22,40 +22,15 @@ interface Params {
 }
 
 export default async function HomeCatalogue({ searchParams }: Params) {
-  const items = await fetchItems(searchParams.title);
-
-  const groupedItems = items ? groupBy(items, "type") : {};
+  const { title } = searchParams;
+  const items = await fetchItems(title);
 
   return (
-    <main className="min-h-screen bg-base-200">
-      <h1 className="pt-10 text-center text-4xl font-bold">
-        PourPal Catalogue
-      </h1>
-
-      <section className="mx-auto py-10">
-        <div className="mx-auto max-w-screen-lg px-4">
-          <div className="mb-8 flex-1">
-            <SearchField />
-          </div>
-          {items.length === 0 ? (
-            <div className="pt-10 text-4xl font-bold">
-              {searchParams.title
-                ? `Not Found "${searchParams.title}"`
-                : "Not Found"}
-            </div>
-          ) : (
-            Object.keys(groupedItems).map((type) => (
-              <div key={type} className="mb-10">
-                <h2 className="text-center md:text-start mb-6 text-2xl font-semibold">{type}</h2>
-                <div className="justify-center md:justify-start flex flex-wrap gap-4">
-                  {groupedItems[type].map((item) => (
-                    <ItemCard key={item.id} item={item} />
-                  ))}
-                </div>
-              </div>
-            ))
-          )}
-        </div>
+    <main className="min-h-screen bg-base-200 flex justify-center">
+      <section className="py-10">
+        <h1 className="pb-10 text-center lg:text-5xl text-4xl font-bold">PourPal Catalogue</h1>
+        <SearchField className="mb-8" />
+        <ItemList items={items} searchTitle={title} />
       </section>
     </main>
   );

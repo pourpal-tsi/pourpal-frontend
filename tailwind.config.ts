@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      gridTemplateColumns: {
+        "autofit": "repeat(auto-fit, minmax(310px, 310px))",
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",

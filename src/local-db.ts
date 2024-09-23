@@ -161,4 +161,19 @@ export const items = [
     alcoholVolume: "13.5%",
     brand: "Domaine de la Côte",
   },
+
+  {
+    id: "13",
+    image:
+      "https://minuman.com/cdn/shop/files/B_G-CUVEE-SPECIALE-ROUGE-SWEET-WINE.jpg?v=1700117745",
+    title: "Chardonnay Wine",
+    description:
+      "A white dry wine with a bright citrus flavor and subtle hints of vanilla.",
+    price: "12 EUR",
+    quantity: 15,
+    country: "France",
+    type: "Wine",
+    alcoholVolume: "13.5%",
+    brand: "Domaine de la Côte",
+  },
 ];
