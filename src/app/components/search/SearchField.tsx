@@ -4,6 +4,7 @@ import classNames from "classnames";
 import { useEffect, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import Loading from "@/app/components/loading/Loading";
+import { updateSearchParams } from "@/utils/updateSearchParams";
 
 interface SearchFieldProps {
   className?: string;
@@ -21,13 +22,14 @@ export default function SearchField({ className }: SearchFieldProps) {
     setQuery(searchParams.get("title") || "");
   }, [searchParams, pathname]);
 
-  /* Trigger the search after 500ms of inactivity */
+
   useEffect(() => {
-    if (query === searchParams.get("title")) return; // Prevent redundant requests
+    const params = new URLSearchParams(searchParams.toString());
+    updateSearchParams(params, "title", query.trim());
 
     const handler = setTimeout(() => {
       setLoading(false);
-      router.push(query.trim() ? `/?title=${query}` : `/`);
+      router.push(`${pathname}?${params.toString()}`);
     }, 500);
 
     setLoading(true);

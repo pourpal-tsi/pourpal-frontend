@@ -2,7 +2,7 @@ export default function ShoppingCart() {
   return (
     <div className="dropdown dropdown-end">
       <div tabIndex={0} role="button" className="btn btn-circle btn-ghost">
-        <div className="indicator">
+        <div className="indicator size-5">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="size-5"

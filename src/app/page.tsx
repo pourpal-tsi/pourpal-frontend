@@ -22,13 +22,13 @@ interface Params {
 }
 
 export default async function HomeCatalogue({ searchParams }: Params) {
-  const { title } = searchParams;
+  const title = searchParams.title || "";
   const items = await fetchItems(title);
 
   return (
     <main className="min-h-screen bg-base-200 flex justify-center">
-      <aside className="xl:block hidden w-72 pr-8 mt-[17rem]">
-        <div className="sticky top-32 bg-white p-5 shadow-xl rounded-xl">
+      <aside className="2xl:block hidden w-80 pr-8 mt-[17rem]">
+        <div className="sticky top-32 bg-white px-6 py-5 shadow-xl rounded-xl">
           <BeverageFilter />
         </div>
       </aside>
