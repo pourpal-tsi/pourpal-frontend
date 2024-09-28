@@ -1,8 +1,8 @@
 "use client";
-import RangeSlider from "@/app/components/search/filters/RangeSlider";
+import RangeSlider from "@/components/search/filters/RangeSlider";
 import { useState } from "react";
-import SelectInput from "@/app/components/search/filters/SelectInput";
-import { beverageOptions, brandOptions, countryOptions } from "@/app/components/search/filters/filters";
+import SelectInput from "@/components/search/filters/SelectInput";
+import { beverageOptions, brandOptions, countryOptions } from "@/components/search/filters/filters";
 import classNames from "classnames";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { updateSearchParams } from "@/utils/updateSearchParams";

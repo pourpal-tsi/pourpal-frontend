@@ -3,7 +3,7 @@
 import classNames from "classnames";
 import { useEffect, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import Loading from "@/app/components/loading/Loading";
+import Loading from "@/components/loading/Loading";
 import { updateSearchParams } from "@/utils/updateSearchParams";
 
 interface SearchFieldProps {
@@ -19,13 +19,13 @@ export default function SearchField({ className }: SearchFieldProps) {
 
   /* Reset the state of the query after page switching */
   useEffect(() => {
-    setQuery(searchParams.get("title") || "");
+    setQuery(searchParams.get("search") || "");
   }, [searchParams, pathname]);
 
 
   useEffect(() => {
     const params = new URLSearchParams(searchParams.toString());
-    updateSearchParams(params, "title", query.trim());
+    updateSearchParams(params, "search", query.trim());
 
     const handler = setTimeout(() => {
       setLoading(false);

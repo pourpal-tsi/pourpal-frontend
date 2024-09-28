@@ -1,7 +1,8 @@
-import ShoppingCart from "@/app/components/header/ShoppingCart";
-import User from "@/app/components/header/User";
+'use client';
+import ShoppingCart from "@/components/header/ShoppingCart";
+import User from "@/components/header/User";
 import Link from "next/link";
-import MobileNavigation from "@/app/components/header/navigation/MobileNavigation";
+import MobileNavigation from "@/components/header/navigation/MobileNavigation";
 
 export default function Header() {
   return (
