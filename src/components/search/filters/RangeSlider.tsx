@@ -1,21 +1,29 @@
 "use client";
 
 interface RangeSliderProps {
-  value: [number, number];
+  value: number[];
   min?: number;
   max?: number;
   step?: number;
   title?: string;
-  onChange: (value: [number, number]) => void;
+  onChange: (value: number[]) => void;
 }
 
-export default function RangeSlider({ value, min = 0, max = 1000, step = 10, title = "", onChange, }: RangeSliderProps) {
-  const handleMinChange = (event) => {
+export default function RangeSlider({
+                                      value,
+                                      min = 0,
+                                      max = 1000,
+                                      step = 10,
+                                      title = "",
+                                      onChange,
+                                    }: RangeSliderProps) {
+  // Типизация event как ChangeEvent для input элементов
+  const handleMinChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newMinValue = Math.min(Number(event.target.value), value[1] - step);
     onChange([newMinValue, value[1]]);
   };
 
-  const handleMaxChange = (event) => {
+  const handleMaxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newMaxValue = Math.max(Number(event.target.value), value[0] + step);
     onChange([value[0], newMaxValue]);
   };
@@ -25,7 +33,9 @@ export default function RangeSlider({ value, min = 0, max = 1000, step = 10, tit
       <label htmlFor="min" className="block">
         <div className="flex justify-between font-semibold">
           <div>From</div>
-          <div>{value[0]} {title}</div>
+          <div>
+            {value[0]} {title}
+          </div>
         </div>
         <input
           type="range"
@@ -40,7 +50,9 @@ export default function RangeSlider({ value, min = 0, max = 1000, step = 10, tit
       <label htmlFor="max" className="block">
         <div className="flex justify-between font-semibold">
           <div>To</div>
-          <div>{value[1]} {title}</div>
+          <div>
+            {value[1]} {title}
+          </div>
         </div>
         <input
           type="range"

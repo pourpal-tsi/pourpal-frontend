@@ -44,7 +44,10 @@ export default function BeverageFilter({ className = "" }: BeverageFilterProps) 
     });
   };
 
-  const handleFilterChange = (key, value) => setFilters((prev) => ({ ...prev, [key]: value }));
+  const handleFilterChange = (key: string, value: any) => {
+    setFilters((prev) => ({ ...prev, [key]: value }));
+  };
+
 
   const classes = classNames("flex flex-col gap-4", className);
 

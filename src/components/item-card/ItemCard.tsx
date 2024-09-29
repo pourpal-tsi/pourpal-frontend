@@ -3,7 +3,7 @@ import { truncateText } from "@/utils/truncateText";
 import { Item } from "@/service/items";
 
 
-export default function ItemCard({ item }: Item) {
+export default function ItemCard({ item }: { item: Item }) {
 
   return (
     <div className="card w-[19.2rem] bg-base-100 shadow-xl">

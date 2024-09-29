@@ -10,20 +10,17 @@ export const updateSearchParams = (
       value.length === defaultValue.length &&
       value.every((v, i) => v === defaultValue[i]);
 
-    // Если массив не равен значению по умолчанию
     if (!isEqualArrays) {
-      // Удаляем старые значения по ключу
       params.delete(key);
-      // Добавляем все новые значения
       value.forEach(val => {
-        params.append(key, String(val)); // Приводим к строке
+        params.append(key, String(val));
       });
     } else {
       params.delete(key);
     }
   } else {
     if (value && value !== defaultValue) {
-      params.set(key, String(value)); // Приводим к строке
+      params.set(key, String(value));
     } else {
       params.delete(key);
     }

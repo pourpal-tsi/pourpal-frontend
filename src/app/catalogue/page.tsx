@@ -1,12 +1,12 @@
 import SearchField from "@/components/search/SearchField";
 import ItemList from "@/components/item-card/ItemList";
 import BeverageFilter from "@/components/search/BeverageFilter";
-import { getItems } from "@/service/items";
+import { getItems, Item } from "@/service/items";
 
 
 export default async function HomeCatalogue({ searchParams }: any) {
   const { search } = searchParams;
-  const items = await getItems(search);
+  const items: Item[] = (await getItems(search)).slice(1,10)
 
   return (
     <main className="min-h-screen bg-base-200 flex justify-center">
