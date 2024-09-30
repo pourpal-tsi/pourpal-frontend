@@ -1,4 +1,4 @@
-'use client';
+"use client";
 export default function ShoppingCart() {
   return (
     <div className="dropdown dropdown-end">

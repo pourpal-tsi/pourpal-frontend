@@ -1,18 +1,24 @@
-import SearchField from "@/components/search/SearchField";
-import ItemList from "@/components/item-card/ItemList";
-import BeverageFilter from "@/components/search/BeverageFilter";
+import SearchField from "../../components/search/SearchField";
+import ItemList from "../../components/item-card/ItemList";
 import { getItems, Item } from "@/service/items";
+import BeverageFilter from "@/components/search/BeverageFilter";
+import { getItemCountries } from "@/service/contries";
+import { getItemBrands } from "@/service/brands";
+import { getItemTypes } from "@/service/types";
 
 
 export default async function HomeCatalogue({ searchParams }: any) {
   const { search } = searchParams;
-  const items: Item[] = (await getItems(search)).slice(1,10)
+  const items: Item[] = (await getItems({ ...searchParams }));
+  const itemTypes = (await getItemTypes()).map((type) => type.type);
+  const itemBrands = (await getItemBrands()).map((brand) => brand.brand);
+  const itemCountries = (await getItemCountries()).map((country) => country.name);
 
   return (
     <main className="min-h-screen bg-base-200 flex justify-center">
       <aside className="2xl:block hidden w-80 pr-8 mt-[17rem]">
         <div className="sticky top-32 bg-white px-6 py-5 shadow-xl rounded-xl">
-          <BeverageFilter />
+          <BeverageFilter types={itemTypes} brands={itemBrands} countries={itemCountries} />
         </div>
       </aside>
       <section className="py-10">

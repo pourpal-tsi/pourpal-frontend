@@ -36,51 +36,51 @@ export interface Item {
   };
 }
 
-export async function getItems(
-  search?: string,
-  types?: string[],
-  countries?: string[],
-  brands?: string[],
-  min_price?: number,
-  max_price?: number
-): Promise<Item[]> {
-  const params = new URLSearchParams();
-  if (search) params.append("search", search);
-  if (types && types.length > 0) params.append("types", types.join(","));
-  if (countries && countries.length > 0) params.append("countries", countries.join(","));
-  if (brands && brands.length > 0) params.append("brands", brands.join(","));
-  if (min_price !== undefined) params.append("min_price", min_price.toString());
-  if (max_price !== undefined) params.append("max_price", max_price.toString());
-
-  const apiUrl = params.toString()
-    ? `${process.env.BACKEND_URL}/items?${params}`
-    : `${process.env.BACKEND_URL}/items`;
-
-  try {
-    const res = await fetch(apiUrl, {
-      cache: "no-cache"
-    });
-
-    const data = await res.json();
-
-    return data.items;
-  } catch (error) {
-    console.error("Failed to fetch items:", error);
-    throw error;
-  }
+interface queryParams {
+  search?: string;
+  types?: string[];
+  countries?: string[];
+  brands?: string[];
+  min_price?: number;
+  max_price?: number;
 }
 
-export async function getItemById(
-  id: string
-): Promise<Item> {
+export async function getItems({
+                                 search = "",
+                                 types = [],
+                                 countries = [],
+                                 brands = [],
+                                 min_price,
+                                 max_price
+                               }: queryParams = {}): Promise<Item[]> {
+  const params = new URLSearchParams();
+
+  if (search) params.append("search", search);
+
+  const addArrayParam = (key: string, values: string | string[]) => {
+    if (Array.isArray(values) && values.length > 0) {
+      params.append(key, values.join(","));
+    } else if (typeof values === "string") {
+      params.append(key, values);
+    }
+  };
+
+  addArrayParam("types", types);
+  addArrayParam("countries", countries);
+  addArrayParam("brands", brands);
+
+  if (min_price !== undefined) params.append("min_price", String(min_price));
+  if (max_price !== undefined) params.append("max_price", String(max_price));
+
+  const apiUrl = `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/items${params.toString() ? `?${params}` : ""}`;
+
+  console.log("Fetching items from:", apiUrl);
   try {
-    const res = await fetch(`${process.env.BACKEND_URL}/items/${id}`);
-
+    const res = await fetch(apiUrl, { cache: "no-cache" });
     const data = await res.json();
-
-    return data.item;
+    return data.items as Item[];
   } catch (error) {
-    console.error("Failed to fetch item:", error);
+    console.error("Failed to fetch items:", error);
     throw error;
   }
 }

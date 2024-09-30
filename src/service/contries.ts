@@ -1,13 +1,13 @@
-interface ItemCountry {
+export interface ItemCountry {
   code: string;
   unicode: string;
   name: string;
   emoji: string;
 }
 
-export async function getItemCountries(): Promise<{ countries: ItemCountry[] }> {
+export async function getItemCountries(): Promise<ItemCountry[]> {
   try {
-    const res = await fetch(`${process.env.BACKEND_URL}/items/countries`, {});
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/items/countries`, {});
 
     if (!res.ok) {
       throw new Error(`Error HTTP: ${res.status}`);

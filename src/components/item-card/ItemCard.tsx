@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { truncateText } from "@/utils/truncateText";
 import { Item } from "@/service/items";
 
 
@@ -7,7 +6,8 @@ export default function ItemCard({ item }: { item: Item }) {
 
   return (
     <div className="card w-[19.2rem] bg-base-100 shadow-xl">
-      <figure className="relative h-[15rem] overflow-hidden grayscale-[60%] transition-all duration-300 hover:grayscale-0">
+      <figure
+        className="relative h-[15rem] overflow-hidden grayscale-[60%] transition-all duration-300 hover:grayscale-0">
         <Image
           className="cursor-pointer object-cover"
           src={item.image_url}
@@ -18,8 +18,6 @@ export default function ItemCard({ item }: { item: Item }) {
       <hr />
       <div className="card-body min-h-60">
         <h2 className="card-title">{item.title}</h2>
-        <p>{truncateText(item.description, 100)}</p>
-
         <p className="text-sm">Volume: {item.volume.amount.$numberDecimal} {item.volume.unit}</p>
         <p className="text-sm">Alcohol: {item.alcohol_volume.amount.$numberDecimal}{item.alcohol_volume.unit}</p>
         <p className="text-sm">Country of origin: {item.origin_country_name}</p>

@@ -1,11 +1,11 @@
-interface ItemBrand {
+export interface ItemBrand {
   brand_id: string;
   brand: string;
 }
 
-export async function getItemBrands(): Promise<{ brands: ItemBrand[] }> {
+export async function getItemBrands(): Promise<ItemBrand[]> {
   try {
-    const res = await fetch(`${process.env.BACKEND_URL}/items/brands`, {});
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/items/brands`, {});
 
     if (!res.ok) {
       throw new Error(`Error HTTP: ${res.status}`);

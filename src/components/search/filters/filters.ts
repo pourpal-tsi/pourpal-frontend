@@ -6,7 +6,7 @@ export const beverageOptions = [
   { value: "gin", label: "Gin" },
   { value: "cognac", label: "Cognac" },
   { value: "tequila", label: "Tequila" },
-  { value: "cocktail", label: "Cocktail" },
+  { value: "cocktail", label: "Cocktail" }
 ];
 
 export const brandOptions = [
@@ -18,7 +18,7 @@ export const brandOptions = [
   { value: "hennessy", label: "Hennessy" },
   { value: "patron", label: "Patron" },
   { value: "remy_martin", label: "Remy Martin" },
-  { value: "beluga", label: "Beluga" },
+  { value: "beluga", label: "Beluga" }
 ];
 
 export const countryOptions = [
@@ -28,5 +28,5 @@ export const countryOptions = [
   { value: "italy", label: "Italy" },
   { value: "spain", label: "Spain" },
   { value: "mexico", label: "Mexico" },
-  { value: "russia", label: "Russia" },
+  { value: "russia", label: "Russia" }
 ];

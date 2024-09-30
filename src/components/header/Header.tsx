@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import ShoppingCart from "@/components/header/ShoppingCart";
 import User from "@/components/header/User";
 import Link from "next/link";

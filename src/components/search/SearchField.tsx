@@ -17,7 +17,6 @@ export default function SearchField({ className }: SearchFieldProps) {
   const searchParams = useSearchParams();
   const pathname = usePathname();
 
-  /* Reset the state of the query after page switching */
   useEffect(() => {
     setQuery(searchParams.get("search") || "");
   }, [searchParams, pathname]);

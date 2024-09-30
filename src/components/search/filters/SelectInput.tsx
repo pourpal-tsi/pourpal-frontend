@@ -1,6 +1,6 @@
 interface SelectInputProps {
   label: string;
-  options: { label: string; value: string }[];
+  options: string[];
   value: string;
   onChange: (value: string) => void;
 }
@@ -14,10 +14,10 @@ export default function SelectInput({ label, options, value, onChange }: SelectI
         value={value}
         onChange={(e) => onChange(e.target.value)}
       >
-        <option value="">-</option>
+        <option value="">All</option>
         {options.map((option) => (
-          <option key={option.value} value={option.value}>
-            {option.label}
+          <option key={option} value={option}>
+            {option}
           </option>
         ))}
       </select>

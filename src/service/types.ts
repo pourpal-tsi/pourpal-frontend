@@ -1,11 +1,11 @@
-interface ItemType {
+export interface ItemType {
   type_id: string;
   type: string;
 }
 
-export async function getItemTypes(): Promise<{ types: ItemType[] }> {
+export async function getItemTypes(): Promise<ItemType[]> {
   try {
-    const res = await fetch(`${process.env.BACKEND_URL}/items/types`);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/items/types`);
 
     if (!res.ok) {
       throw new Error(`Error HTTP: ${res.status}`);

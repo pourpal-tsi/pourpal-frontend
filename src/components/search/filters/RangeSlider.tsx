@@ -15,9 +15,8 @@ export default function RangeSlider({
                                       max = 1000,
                                       step = 10,
                                       title = "",
-                                      onChange,
+                                      onChange
                                     }: RangeSliderProps) {
-  // Типизация event как ChangeEvent для input элементов
   const handleMinChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newMinValue = Math.min(Number(event.target.value), value[1] - step);
     onChange([newMinValue, value[1]]);
