@@ -1,8 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
-import {ComboBox, ComboBoxProps} from "@/components/ui/combobox";
-import {getCountries} from "@/services/countries";
+import { ComboBox, ComboBoxProps } from "@/components/ui/combobox";
+import { getCountries } from "@/services/countries";
 
-export type CountryComboBoxProps = Omit<ComboBoxProps, "items" | "loading" | "disabled">
+export type CountryComboBoxProps = Omit<
+  ComboBoxProps,
+  "items" | "loading" | "disabled"
+>;
 
 export default function CountryComboBox(props: CountryComboBoxProps) {
   const { data, isLoading } = useQuery({

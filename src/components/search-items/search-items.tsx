@@ -45,21 +45,18 @@ export default function SearchItems() {
       <Input
         type="search"
         placeholder="Search..."
-        className="bg-white grow py-5"
+        className="grow bg-white py-5"
         value={_search}
         onChange={(e) => setSearch(e.target.value)}
       />
       <Sheet open={isOpen} onOpenChange={setIsOpen}>
         <SheetTrigger>
-          <div className="flex gap-2 button-like py-[200px]">
-            <SlidersHorizontal
-              size={20}
-              className="white md:text-neutral-200"
-            />
-            <p className="hidden md:block text-sm text-white">Filters</p>
+          <div className="button-like flex gap-2 py-[200px]">
+            <SlidersHorizontal size={20} className="md:text-neutral-200" />
+            <p className="hidden text-sm text-white md:block">Filters</p>
           </div>
         </SheetTrigger>
-        <SheetContent className="w-full p-6 overflow-auto md:max-w-[50vw]">
+        <SheetContent className="w-full overflow-auto p-6 md:max-w-[50vw]">
           <SheetHeader>
             <SheetTitle className="text-left">Filters</SheetTitle>
             <SheetDescription className="text-justify">
@@ -67,12 +64,12 @@ export default function SearchItems() {
               category, type, or brand. Quickly find what you’re looking
               for—wine, beer, or spirits. Enjoy!
             </SheetDescription>
-            <div className="w-full pt-2 space-y-4">
+            <div className="w-full space-y-4 pt-2">
               <div className="space-y-2">
                 <div className="text-left">
                   <Label>Type</Label>
                 </div>
-                <div className="flex flex-col min-h-[42px] [&_button]:grow">
+                <div className="flex min-h-[42px] flex-col [&_button]:grow">
                   <TypeComboBox id="type" />
                 </div>
               </div>
@@ -80,7 +77,7 @@ export default function SearchItems() {
                 <div className="text-left">
                   <Label>Country</Label>
                 </div>
-                <div className="flex flex-col min-h-[42px] [&_button]:grow">
+                <div className="flex min-h-[42px] flex-col [&_button]:grow">
                   <CountryComboBox id="country" />
                 </div>
               </div>
@@ -88,7 +85,7 @@ export default function SearchItems() {
                 <div className="text-left">
                   <Label>Brand</Label>
                 </div>
-                <div className="flex flex-col min-h-[42px] [&_button]:grow">
+                <div className="flex min-h-[42px] flex-col [&_button]:grow">
                   <BrandComboBox />
                 </div>
               </div>
@@ -99,7 +96,7 @@ export default function SearchItems() {
                   </div>
                   <Input
                     id="minPrice"
-                    className="py-5 mt-2"
+                    className="mt-2 py-5"
                     placeholder="Enter min price"
                   />
                 </div>
@@ -109,7 +106,7 @@ export default function SearchItems() {
                   </div>
                   <Input
                     id="maxPrice"
-                    className="py-5 mt-2"
+                    className="mt-2 py-5"
                     placeholder="Enter max price"
                   />
                 </div>

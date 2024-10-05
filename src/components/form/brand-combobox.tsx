@@ -1,8 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import { getItemBrands } from "@/services/item-brands";
-import {ComboBox, ComboBoxProps} from "@/components/ui/combobox";
+import { ComboBox, ComboBoxProps } from "@/components/ui/combobox";
 
-export type BrandComboBoxProps = Omit<ComboBoxProps, "items" | "loading" | "disabled">
+export type BrandComboBoxProps = Omit<
+  ComboBoxProps,
+  "items" | "loading" | "disabled"
+>;
 
 export default function BrandComboBox(props: BrandComboBoxProps) {
   const { data, isLoading } = useQuery({
@@ -11,17 +14,17 @@ export default function BrandComboBox(props: BrandComboBoxProps) {
   });
 
   const items =
-      data?.map(({ brand_id, brand }) => ({
-        value: brand_id,
-        label: brand,
-      })) ?? [];
+    data?.map(({ brand_id, brand }) => ({
+      value: brand_id,
+      label: brand,
+    })) ?? [];
 
   return (
-      <ComboBox
-          {...props}
-          items={items}
-          loading={isLoading}
-          disabled={items.length == 0}
-      />
+    <ComboBox
+      {...props}
+      items={items}
+      loading={isLoading}
+      disabled={items.length == 0}
+    />
   );
 }

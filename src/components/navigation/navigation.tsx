@@ -1,17 +1,20 @@
 "use client";
 
-import {Sheet, SheetContent, SheetTrigger} from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import Sidebar from "@/components/navigation/sidebar";
-import {Bell, Menu, ShoppingCart} from "lucide-react";
+import { Bell, Menu, ShoppingCart } from "lucide-react";
 import Ping from "@/components/ping/ping";
 import Link from "next/link";
-import useCloseOnPathChange, {UseCloseOnPathChangeResult} from "@/hooks/use-close-on-path-change";
+import useCloseOnPathChange, {
+  UseCloseOnPathChangeResult,
+} from "@/hooks/use-close-on-path-change";
 
 export default function Navigation() {
-    const { isOpen, setIsOpen }: UseCloseOnPathChangeResult = useCloseOnPathChange();
+  const { isOpen, setIsOpen }: UseCloseOnPathChangeResult =
+    useCloseOnPathChange();
 
-    return (
-    <header className="sticky top-0 bg-white/90 backdrop-blur-lg flex justify-between gap-1 items-center min-h-[73px] px-2 border-b z-50">
+  return (
+    <header className="sticky top-0 z-50 flex min-h-[73px] items-center justify-between gap-1 border-b bg-white/90 px-2 backdrop-blur-lg">
       {/* SIDEBAR */}
       <Sheet open={isOpen} onOpenChange={setIsOpen}>
         <SheetTrigger>
@@ -19,16 +22,16 @@ export default function Navigation() {
             <Menu />
           </div>
         </SheetTrigger>
-        <SheetContent side="left" className="w-full p-4 overflow-auto">
+        <SheetContent side="left" className="w-full overflow-auto p-4">
           <Sidebar />
         </SheetContent>
       </Sheet>
 
       {/* APPLICATION NAME */}
-      <span className="grow text-xl p-1 text-foreground">
+      <span className="grow p-1 text-xl text-foreground">
         <Link
           href="/catalogue"
-          className="grow p-2 transform md:hover:bg-neutral-100 rounded-lg "
+          className="grow rounded-lg p-2 md:hover:bg-neutral-100"
         >
           PourPal
         </Link>
@@ -40,7 +43,7 @@ export default function Navigation() {
       </div>
 
       {/* NOTIFICATION */}
-      <div className="relative icon-hover">
+      <div className="icon-hover relative">
         <Bell strokeWidth={1.2} />
         <Ping />
       </div>

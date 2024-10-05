@@ -9,9 +9,13 @@ export default function UserProfile() {
         <AvatarImage src="https://tsi.lv/wp-content/uploads/2020/02/alexander_grakovski.png" />
         <AvatarFallback>AG</AvatarFallback>
       </Avatar>
-      <div className="overflow-hidden shrink">
-        <p className="font-semibold text-sm text-ellipsis overflow-hidden text-nowrap">Aleksandr Grakovsky</p>
-        <p className="text-neutral-600 text-sm  text-ellipsis overflow-hidden">sashka@numerical.com</p>
+      <div className="overflow-hidden">
+        <p className="overflow-hidden text-ellipsis text-nowrap text-sm font-semibold">
+          Aleksandr Grakovskiy
+        </p>
+        <p className="overflow-hidden text-ellipsis text-sm text-neutral-600">
+          sashka@numerical.com
+        </p>
       </div>
     </div>
   );

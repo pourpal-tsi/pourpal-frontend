@@ -15,8 +15,8 @@ export default function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <div className="flex flex-col min-h-[95vh]">
-      <nav className="flex flex-col grow gap-4">
+    <div className="flex min-h-[95vh] flex-col">
+      <nav className="flex grow flex-col gap-4">
         <div>
           <UserProfile />
         </div>
@@ -42,8 +42,11 @@ export default function Sidebar() {
           ))}
         </div>
       </nav>
-      <div className="italic text-center text-sm font-extralight text-neutral-400">
-        <Link target="_blank" href="https://e.tsi.lv/pluginfile.php/151322/mod_resource/content/2/1.5.3.NormalDensityFunction.pdf">
+      <div className="text-center text-sm font-extralight italic text-neutral-400">
+        <Link
+          target="_blank"
+          href="https://e.tsi.lv/pluginfile.php/151322/mod_resource/content/2/1.5.3.NormalDensityFunction.pdf"
+        >
           version: 0.3989
         </Link>
       </div>
