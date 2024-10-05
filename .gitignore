@@ -8,6 +8,9 @@
 .idea
 .idea/*
 
+/.idea
+/.idea/*
+
 # testing
 /coverage
 
