@@ -45,7 +45,7 @@ export default function SearchItems() {
       <Input
         type="search"
         placeholder="Search..."
-        className="grow bg-white py-5"
+        className="bg-white py-5 w-[240px] md:w-full"
         value={_search}
         onChange={(e) => setSearch(e.target.value)}
       />
