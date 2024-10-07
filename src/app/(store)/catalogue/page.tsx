@@ -1,15 +1,22 @@
 import SearchItems from "@/components/search-items/search-items";
-import { getItems, GetItemsQueryParams, Item } from "@/services/items";
+import {
+  getItems,
+  GetItemsQueryParams,
+  Item,
+  PagingResponse,
+} from "@/services/items";
 import Image from "next/image";
-import {Button} from "@/components/ui/button";
-import {ShoppingBasket} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { ShoppingBasket } from "lucide-react";
+import Pagination from "@/components/pagination/pagination";
 
 export default async function Home({
   searchParams,
 }: {
   searchParams: GetItemsQueryParams;
 }) {
-  const { items }: { items: Item[] } = await getItems(searchParams);
+  const { items, paging }: { items: Item[]; paging: PagingResponse } =
+    await getItems(searchParams);
   return (
     <div className="mx-auto flex max-w-screen-xl flex-col p-6">
       <div className="mx-auto grid max-w-[450px] grid-cols-1 gap-7 md:max-w-full md:grid-cols-3 lg:grid-cols-4">
@@ -20,32 +27,35 @@ export default async function Home({
         </div>
         {items.length > 0 ? (
           items.map((item: Item, index: number) => (
-            <div key={index} className="flex max-w-[280px] flex-col gap-2">
-              <div className="max-h-[300px] rounded-xl bg-white relative transform md:hover:shadow-md duration-300">
+            <div
+              key={index}
+              className="flex max-w-[300px] flex-col justify-center gap-2"
+            >
+              <div className="relative max-h-[300px] rounded-xl bg-white duration-300 active:shadow-md md:hover:shadow-md">
                 <Image
-                  className="mx-auto aspect-[4/5] max-h-[300px] object-contain p-10 transform md:hover:scale-110 duration-300 pointer-events-none"
+                  className="mx-auto aspect-[4/5] max-h-[300px] select-none object-contain p-10 duration-300 active:scale-110 md:hover:scale-105"
                   width={200}
                   height={500}
                   src={item.image_url}
-                  alt="pic"
+                  alt={item.title ?? "Item"}
                 />
-                <div className="absolute text-center text-[0.725rem] text-muted-foreground bottom-2 inset-x-0">
+                <div className="absolute inset-x-0 bottom-2 text-center text-[0.725rem] text-muted-foreground">
                   {item.alcohol_volume}
                   {item.volume_unit}, {item.alcohol_volume}%
                 </div>
               </div>
-              <p className="overflow-hidden text-ellipsis text-nowrap text-center ">
+              <p className="overflow-hidden text-ellipsis text-nowrap text-center font-[500]">
                 {item.title}
               </p>
               <div className="flex gap-2.5">
-                <div className="overflow-hidden text-ellipsis text-2xl font-semibold text-orange-600">
+                <div className="overflow-hidden text-ellipsis text-nowrap text-2xl font-semibold text-orange-600">
                   {item.price}
                   {item.currency}
                   <span className="text-[0.75rem] font-light text-primary">
                     /pcs
                   </span>
                 </div>
-                <div className="text-muted-foreground grow line-through">
+                <div className="grow text-muted-foreground line-through">
                   {item.price}
                   {item.currency}
                 </div>
@@ -60,6 +70,9 @@ export default async function Home({
             No items found
           </div>
         )}
+      </div>
+      <div className="mx-auto mt-10 rounded-xl bg-white p-1">
+        <Pagination paging={paging} />
       </div>
     </div>
   );

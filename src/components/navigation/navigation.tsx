@@ -12,9 +12,8 @@ import useCloseOnPathChange, {
 export default function Navigation() {
   const { isOpen, setIsOpen }: UseCloseOnPathChangeResult =
     useCloseOnPathChange();
-
   return (
-    <header className="sticky top-0 z-50 flex min-h-[73px] items-center justify-between gap-1 border-b bg-white/90 px-2 backdrop-blur-lg">
+    <header className="fixed inset-x-0 top-0 z-50 flex min-h-[73px] items-center justify-between gap-1 border-b bg-white/90 px-2 backdrop-blur-lg">
       {/* SIDEBAR */}
       <Sheet open={isOpen} onOpenChange={setIsOpen}>
         <SheetTrigger>

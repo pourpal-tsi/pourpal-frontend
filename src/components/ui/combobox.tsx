@@ -2,7 +2,6 @@
 
 import * as React from "react";
 import { Check, ChevronsUpDown, Loader2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import {
   Popover,
   PopoverContent,
@@ -17,6 +16,7 @@ import {
   CommandList,
 } from "@/components/ui/command";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 
 export interface ComboBoxProps
   extends React.InputHTMLAttributes<HTMLInputElement> {

@@ -36,10 +36,10 @@ export const itemSchema = z.object({
 
 export type ItemSchema = z.infer<typeof itemSchema>;
 
-function above(value: number, min: number) {
+export function above(value: number, min: number) {
   return value > min;
 }
 
-function between(value: number, min: number, max: number) {
+export function between(value: number, min: number, max: number) {
   return min <= value && value <= max;
 }

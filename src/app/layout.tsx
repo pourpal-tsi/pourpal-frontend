@@ -49,7 +49,7 @@ export default function RootLayout({
       <body className="flex h-screen flex-col">
         <RootProvider>
           <Navigation />
-          <main className="w-full grow bg-gray-50">{children}</main>
+          <main className="w-full grow bg-gray-50 py-20">{children}</main>
           <footer className="text-center">Ragazzo sporco copyright</footer>
         </RootProvider>
       </body>
