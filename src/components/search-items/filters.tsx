@@ -106,7 +106,7 @@ export default function FilterItem({ setIsOpen, filters }: FiltersProps) {
           name="types"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>
+              <FormLabel className="text-left">
                 <div>Type</div>
               </FormLabel>
               <FormControl>
@@ -127,7 +127,7 @@ export default function FilterItem({ setIsOpen, filters }: FiltersProps) {
           name="countries"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>
+              <FormLabel className="text-left">
                 <div>Country</div>
               </FormLabel>
               <FormControl>
@@ -173,7 +173,7 @@ export default function FilterItem({ setIsOpen, filters }: FiltersProps) {
             name="min_price"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>
+                <FormLabel className="text-left">
                   <div>Min Price</div>
                 </FormLabel>
                 <FormControl>
@@ -197,7 +197,7 @@ export default function FilterItem({ setIsOpen, filters }: FiltersProps) {
             name="max_price"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>
+                <FormLabel className="text-left">
                   <div>Max Price</div>
                 </FormLabel>
                 <FormControl>

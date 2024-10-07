@@ -71,9 +71,9 @@ export default async function Home({
           </div>
         )}
       </div>
-      <div className="mx-auto mt-10 rounded-xl bg-white p-1">
+      <span className="mx-auto mt-10 rounded-xl bg-white p-1">
         <Pagination paging={paging} />
-      </div>
+      </span>
     </div>
   );
 }
