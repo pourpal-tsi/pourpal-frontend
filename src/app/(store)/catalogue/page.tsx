@@ -40,7 +40,7 @@ export default async function Home({
                   alt={item.title ?? "Item"}
                 />
                 <div className="absolute inset-x-0 bottom-2 text-center text-[0.725rem] text-muted-foreground">
-                  {item.alcohol_volume}
+                  {item.volume}
                   {item.volume_unit}, {item.alcohol_volume}%
                 </div>
               </div>
