@@ -1,4 +1,4 @@
-export type QueryParams = Record<string, string | number | null>;
+export type QueryParams = Record<string, string | number | null | undefined>;
 
 export function createQueryString(params: QueryParams) {
   const searchParams = new URLSearchParams();

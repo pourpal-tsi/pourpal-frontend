@@ -9,6 +9,8 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ShoppingBasket } from "lucide-react";
 import Pagination from "@/components/pagination/pagination";
+import SortItems from "@/components/search-items/sort-items";
+import Link from "next/link";
 
 export default async function Home({
   searchParams,
@@ -24,26 +26,29 @@ export default async function Home({
           <div className="flex space-x-2">
             <SearchItems />
           </div>
+          <SortItems />
         </div>
         {items.length > 0 ? (
-          items.map((item: Item, index: number) => (
+          items.map((item: Item) => (
             <div
-              key={index}
+              key={item.id}
               className="flex max-w-[300px] flex-col justify-center gap-2"
             >
-              <div className="relative max-h-[300px] rounded-xl bg-white duration-300 active:shadow-md md:hover:shadow-md">
-                <Image
-                  className="mx-auto aspect-[4/5] max-h-[300px] select-none object-contain p-10 duration-300 active:scale-110 md:hover:scale-105"
-                  width={200}
-                  height={500}
-                  src={item.image_url}
-                  alt={item.title ?? "Item"}
-                />
-                <div className="absolute inset-x-0 bottom-2 text-center text-[0.725rem] text-muted-foreground">
-                  {item.volume}
-                  {item.volume_unit}, {item.alcohol_volume}%
+              <Link href={`/catalogue/${item.id}`}>
+                <div className="relative max-h-[300px] rounded-xl bg-white duration-300 active:shadow-md md:hover:shadow-md">
+                  <Image
+                    className="mx-auto aspect-[4/5] max-h-[300px] select-none object-contain p-10 duration-300 active:scale-110 md:hover:scale-105"
+                    width={200}
+                    height={500}
+                    src={item.image_url}
+                    alt={item.title ?? "Item"}
+                  />
+                  <div className="absolute inset-x-0 bottom-2 text-center text-[0.725rem] text-muted-foreground">
+                    {item.volume}
+                    {item.volume_unit}, {item.alcohol_volume}%
+                  </div>
                 </div>
-              </div>
+              </Link>
               <p className="overflow-hidden text-ellipsis text-nowrap text-center font-[500]">
                 {item.title}
               </p>

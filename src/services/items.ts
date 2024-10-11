@@ -76,6 +76,10 @@ interface ItemResponse {
 }
 
 export interface GetItemsQueryParams {
+  brands?: string[];
+  types?: string[];
+  min_price?: number;
+  max_price?: number;
   search?: string;
   page_size?: number;
   page_number?: number;
@@ -92,6 +96,11 @@ export async function getItems(props: GetItemsQueryParams = {}) {
     items: result.items.map(convert),
     paging: result.paging,
   };
+}
+
+export async function getItem(id: string) {
+  const result = (await backend.get(`/items/${id}`)).item as ItemResponse;
+  return convert(result);
 }
 
 export async function createItem(item: ItemSchema) {

@@ -46,11 +46,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${poppins.className}`}>
-      <body className="flex h-screen flex-col">
+      <body className="flex min-h-screen flex-col">
         <RootProvider>
           <Navigation />
-          <main className="w-full grow bg-gray-50 py-20">{children}</main>
-          <footer className="text-center">Ragazzo sporco copyright</footer>
+          <main className="w-full grow bg-gray-50 pt-[4.5rem]">{children}</main>
+          <footer className="border-t text-center">
+            Ragazzo sporco copyright
+          </footer>
         </RootProvider>
       </body>
     </html>

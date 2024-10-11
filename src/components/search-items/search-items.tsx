@@ -17,7 +17,7 @@ import { useEffect, useState } from "react";
 import { useDebouncedValue } from "@/hooks/use-debounced-value";
 import { useRouter, useSearchParams } from "next/navigation";
 import { createQueryString } from "@/utils/createQueryString";
-import FilterItem from "@/components/search-items/filters";
+import FilterItem from "@/components/search-items/filter-items";
 
 export default function SearchItems() {
   const { isOpen, setIsOpen, pathname }: UseCloseOnPathChangeResult =

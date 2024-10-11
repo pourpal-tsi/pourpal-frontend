@@ -59,7 +59,6 @@ export class RestClient {
     if (!response.ok) {
       throw new RestClientError(response);
     }
-
     return await response.json();
   }
 }

@@ -40,9 +40,9 @@ const filtersSchema = z
     path: ["min_price"],
   });
 
-type Filters = z.infer<typeof filtersSchema>;
+type FilterItems = z.infer<typeof filtersSchema>;
 
-const defaultFilters: Filters = {
+const defaultFilters: FilterItems = {
   types: "",
   countries: "",
   brands: "",
@@ -65,7 +65,7 @@ interface FiltersProps {
 }
 
 export default function FilterItem({ setIsOpen, filters }: FiltersProps) {
-  const form = useForm<Filters>({
+  const form = useForm<FilterItems>({
     defaultValues: {
       ...defaultFilters,
       ...(Object.keys(filters).length > 0
@@ -85,7 +85,7 @@ export default function FilterItem({ setIsOpen, filters }: FiltersProps) {
   const pathname: string = usePathname();
   const searchParams: ReadonlyURLSearchParams = useSearchParams();
 
-  const handleForm = (values: Filters) => {
+  const handleForm = (values: FilterItems) => {
     const params = Object.fromEntries(searchParams.entries());
     delete params.page_number;
     const url = `${pathname}?${createQueryString({ ...params, ...values })}`;
