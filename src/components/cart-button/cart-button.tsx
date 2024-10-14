@@ -35,13 +35,13 @@ export default function CartButton({
   };
 
   const handleAmountChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const value = Math.abs(e.target.value);
-    if (value === "") {
+    const value = e.target.value;
+    const numericValue = Math.floor(Number(value));
+    if (value === "" || numericValue <= 0) {
       setAmount(1);
       return;
     }
 
-    const numericValue = Number(value);
     if (numericValue >= quantity) {
       setAmount(quantity);
     } else {
@@ -84,8 +84,9 @@ export default function CartButton({
             onChange={handleAmountChange}
             onFocus={handleFocus}
             onBlur={() => {
-              if (amount === 0) setAmount(1);
+              if (amount <= 0) setAmount(1);
             }}
+            min="1"
           />
           <Plus className="cursor-pointer pt-1.5" onClick={handleIncrement} />
         </div>
