@@ -35,7 +35,7 @@ export default function CartButton({
   };
 
   const handleAmountChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
+    const value = Math.abs(e.target.value);
     if (value === "") {
       setAmount(1);
       return;
