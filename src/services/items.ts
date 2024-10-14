@@ -45,21 +45,15 @@ interface ItemResponse {
   type_id: string;
   type_name: string;
   price: {
-    amount: {
-      $numberDecimal: string;
-    };
+    amount: string;
     currency: string;
   };
   volume: {
-    amount: {
-      $numberDecimal: string;
-    };
+    amount: string;
     unit: "ml" | "cl" | "dl" | "l";
   };
   alcohol_volume: {
-    amount: {
-      $numberDecimal: string;
-    };
+    amount: string;
     unit: string;
   };
   quantity: number;
@@ -67,12 +61,8 @@ interface ItemResponse {
   origin_country_name: string;
   brand_id: string;
   brand_name: string;
-  updated_at: {
-    $date: string;
-  };
-  added_at: {
-    $date: string;
-  };
+  updated_at: string;
+  added_at: string;
 }
 
 export interface GetItemsQueryParams {
@@ -124,13 +114,13 @@ function convert(response: ItemResponse): Item {
     type_name: response.type_name,
     brand_id: response.brand_id,
     brand_name: response.brand_name,
-    price: response.price.amount.$numberDecimal,
+    price: response.price.amount,
     currency: response.price.currency,
     origin_country_code: response.origin_country_code,
     origin_country_name: response.origin_country_name,
-    volume: response.volume.amount.$numberDecimal,
+    volume: response.volume.amount,
     volume_unit: response.volume.unit,
-    alcohol_volume: response.alcohol_volume.amount.$numberDecimal,
+    alcohol_volume: response.alcohol_volume.amount,
     quantity: response.quantity,
     description: response.description,
     image_url: response.image_url,

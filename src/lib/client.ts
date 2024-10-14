@@ -55,7 +55,7 @@ export class RestClient {
       ...body,
     });
 
-    const response = await fetch(request);
+    const response = await fetch(request, { next: { revalidate: 60 } });
     if (!response.ok) {
       throw new RestClientError(response);
     }
