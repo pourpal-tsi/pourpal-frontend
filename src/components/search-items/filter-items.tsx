@@ -20,7 +20,7 @@ import {
   useRouter,
   useSearchParams,
 } from "next/navigation";
-import { createQueryString } from "@/utils/createQueryString";
+import { createQueryString } from "@/utils/create-query-string";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 
 const filtersSchema = z

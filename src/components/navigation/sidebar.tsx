@@ -1,6 +1,5 @@
 "use client";
 
-import UserProfile from "@/components/user-profile";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
@@ -17,9 +16,6 @@ export default function Sidebar() {
   return (
     <div className="flex min-h-[95vh] flex-col">
       <nav className="flex grow flex-col gap-4">
-        <div>
-          <UserProfile />
-        </div>
         <div>
           {menuList.map((menu: MenuGroup, menuKey: number) => (
             <div key={menuKey}>

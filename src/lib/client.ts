@@ -13,6 +13,7 @@ export interface RestClientOptions {
 
 export interface RestClientRequestInit extends RequestInit {
   json?: object;
+  headers?: HeadersInit;
 }
 
 export class RestClient {
@@ -43,19 +44,18 @@ export class RestClient {
     const body = json && { body: JSON.stringify(json) };
 
     const headers = {
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      ...(options?.headers || {}),
     };
 
     const request = new Request(this.baseUrl + endpoint, {
-      ...headers,
       ...options,
       ...body,
+      headers,
     });
 
-    const response = await fetch(request, { next: { revalidate: 60 } });
+    const response = await fetch(request, { cache: "no-store" });
     if (!response.ok) {
       throw new RestClientError(response);
     }

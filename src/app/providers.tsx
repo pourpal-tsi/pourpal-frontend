@@ -2,10 +2,11 @@
 
 import { ReactNode } from "react";
 import {
-  QueryClientProvider,
-  QueryClient,
   MutationCache,
+  QueryClient,
+  QueryClientProvider,
 } from "@tanstack/react-query";
+import { UserProvider } from "@/hooks/use-user";
 
 const client = new QueryClient({
   mutationCache: new MutationCache({
@@ -20,7 +21,9 @@ const client = new QueryClient({
 export default function RootProvider({ children }: { children: ReactNode }) {
   return (
     <QueryClientProvider client={client}>
-      <>{children}</>
+      <UserProvider>
+        <>{children}</>
+      </UserProvider>
     </QueryClientProvider>
   );
 }

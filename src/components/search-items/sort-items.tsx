@@ -2,7 +2,7 @@
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
-import { createQueryString } from "@/utils/createQueryString";
+import { createQueryString } from "@/utils/create-query-string";
 import {
   Select,
   SelectContent,
