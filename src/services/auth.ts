@@ -2,6 +2,7 @@
 import backend from "@/lib/client-config";
 import { cookies } from "next/headers";
 import { jwtDecode } from "jwt-decode";
+import { getCart } from "@/services/cart";
 
 export interface UserCredentials {
   email: string;
@@ -10,7 +11,7 @@ export interface UserCredentials {
 
 export interface TokenResponse {
   access_token: string;
-  refresh_token?: string;
+  card_id: string;
 }
 
 export interface TokenPayload {
@@ -39,6 +40,10 @@ export async function login(credentials: UserCredentials) {
     httpOnly: true,
     secure: true,
   };
+
+  if (!cookies().get("cardId")?.value) {
+    await getCart();
+  }
 
   cookies().set({
     name: "accessToken",

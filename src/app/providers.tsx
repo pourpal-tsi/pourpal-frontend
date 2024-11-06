@@ -6,7 +6,8 @@ import {
   QueryClient,
   QueryClientProvider,
 } from "@tanstack/react-query";
-import { UserProvider } from "@/hooks/use-user";
+import { UserProvider } from "@/context/user-context";
+import { CartProvider } from "@/context/cart-context";
 
 const client = new QueryClient({
   mutationCache: new MutationCache({
@@ -21,9 +22,9 @@ const client = new QueryClient({
 export default function RootProvider({ children }: { children: ReactNode }) {
   return (
     <QueryClientProvider client={client}>
-      <UserProvider>
-        <>{children}</>
-      </UserProvider>
+      <CartProvider>
+        <UserProvider>{children}</UserProvider>
+      </CartProvider>
     </QueryClientProvider>
   );
 }

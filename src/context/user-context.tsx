@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import {
   getProfile,
   login,
@@ -23,9 +23,8 @@ const UserContext = createContext<UserContextType>({
   loginUser: async () => {},
 });
 
-export const useUser = () => {
-  return useContext(UserContext);
-};
+// eslint-disable-next-line react-hooks/rules-of-hooks
+export const userContext = () => useContext(UserContext);
 
 interface UserProviderProps {
   children: React.ReactNode;

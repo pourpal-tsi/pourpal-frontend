@@ -14,7 +14,7 @@ import { useState } from "react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { AlertCircle, UserRoundPlus } from "lucide-react";
 
-export default function Login() {
+export default function LoginPage() {
   const [isError, setIsError] = useState<boolean>(false);
 
   return (

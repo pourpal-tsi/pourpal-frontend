@@ -9,12 +9,12 @@ import useCloseOnPathChange, {
 } from "@/hooks/use-close-on-path-change";
 import { DialogTitle } from "@/components/ui/dialog";
 import UserProfile from "@/components/user-profile";
-import { useUser } from "@/hooks/use-user";
+import { userContext } from "@/context/user-context";
 
 export default function Navigation() {
   const { isOpen, setIsOpen }: UseCloseOnPathChangeResult =
     useCloseOnPathChange();
-  const { user, isAuthenticated, logoutUser, loading } = useUser();
+  const { user, isAuthenticated, logoutUser, loading } = userContext();
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 flex min-h-[73px] items-center justify-between gap-1 border-b bg-white/90 px-2 backdrop-blur-lg">
@@ -44,7 +44,9 @@ export default function Navigation() {
 
       {/* SHOPPING CART */}
       <div className="icon-hover pr-3">
-        <ShoppingCart strokeWidth={1.2} />
+        <Link href="/shopping-cart">
+          <ShoppingCart strokeWidth={1.2} />
+        </Link>
       </div>
 
       {/* USER AUTHENTICATION */}

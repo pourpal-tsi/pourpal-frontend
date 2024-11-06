@@ -30,10 +30,15 @@ export default function SearchItems() {
   const [search] = useDebouncedValue(_search, 500);
 
   useEffect(() => {
+    if (pathname?.includes("/catalogue/")) {
+      return;
+    }
+
     const params = Object.fromEntries(searchParams.entries());
     if (search !== initialSearch) {
       delete params.page_number;
     }
+
     const url = `${pathname}?${createQueryString({ ...params, search, page_size: 24 })}`;
     router.push(url, { scroll: false });
   }, [pathname, search, router, searchParams, initialSearch]);

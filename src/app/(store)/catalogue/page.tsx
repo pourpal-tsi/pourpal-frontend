@@ -6,19 +6,19 @@ import {
   PagingResponse,
 } from "@/services/items";
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { ShoppingBasket } from "lucide-react";
 import Pagination from "@/components/pagination/pagination";
 import SortItems from "@/components/search-items/sort-items";
 import Link from "next/link";
+import { AddToCart } from "@/components/cart-button/add-to-cart";
 
-export default async function Home({
+export default async function CataloguePage({
   searchParams,
 }: {
   searchParams: GetItemsQueryParams;
 }) {
   const { items, paging }: { items: Item[]; paging: PagingResponse } =
     await getItems(searchParams);
+
   return (
     <div className="mx-auto flex max-w-screen-xl flex-col p-6">
       <div className="mx-auto grid max-w-[450px] grid-cols-1 gap-7 md:max-w-full md:grid-cols-3 lg:grid-cols-4">
@@ -64,9 +64,7 @@ export default async function Home({
                   {item.price}
                   {item.currency}
                 </div>
-                <Button>
-                  <ShoppingBasket strokeWidth={1.5} />
-                </Button>
+                <AddToCart id={item.id} />
               </div>
             </div>
           ))

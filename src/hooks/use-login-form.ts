@@ -4,7 +4,7 @@ import { z } from "zod";
 import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
 import { useState } from "react";
-import { useUser } from "@/hooks/use-user";
+import { userContext } from "@/context/user-context";
 
 const loginSchema = z.object({
   email: z.string().email(),
@@ -24,7 +24,7 @@ export function useLoginForm(setIsError: (isError: boolean) => void) {
     },
   });
   const router = useRouter();
-  const { loginUser } = useUser();
+  const { loginUser } = userContext();
 
   const mutation = useMutation({
     mutationFn: loginUser,

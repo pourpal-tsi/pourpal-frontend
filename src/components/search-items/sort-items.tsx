@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createQueryString } from "@/utils/create-query-string";
 import {
   Select,
@@ -43,6 +43,12 @@ export default function SortItems() {
   const handleSortChange = (newSortBy: string | undefined) => {
     const isEmptySortBy = newSortBy === " " ? undefined : newSortBy;
     setSortBy(isEmptySortBy);
+
+    if (isEmptySortBy === "price" && !sortOrder) {
+      setSortOrder("asc");
+    } else if (isEmptySortBy === "title" && !sortOrder) {
+      setSortOrder("asc");
+    }
     router.push(updateUrl(isEmptySortBy, sortOrder));
   };
 
@@ -51,6 +57,12 @@ export default function SortItems() {
     setSortOrder(newSortOrder);
     router.push(updateUrl(sortBy, newSortOrder));
   };
+
+  useEffect(() => {
+    if (sortBy === "price" && !sortOrder) {
+      setSortOrder("asc");
+    }
+  }, [sortBy, sortOrder]);
 
   return (
     <div className="flex justify-center pt-2">
@@ -80,7 +92,6 @@ export default function SortItems() {
           )}
         </Button>
       )}
-
       {sortBy === "price" && (
         <Button
           onClick={handleOrderChange}
@@ -88,9 +99,9 @@ export default function SortItems() {
           className="ml-2 h-[2.6rem]"
         >
           {sortOrder === "asc" ? (
-            <ArrowUp10 strokeWidth={1.2} />
-          ) : (
             <ArrowUp01 strokeWidth={1.2} />
+          ) : (
+            <ArrowUp10 strokeWidth={1.2} />
           )}
         </Button>
       )}

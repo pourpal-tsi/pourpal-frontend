@@ -41,7 +41,7 @@ export default async function Item({ params }: ItemProps) {
       {/* CURRENT ITEM */}
       <div className="mx-4 flex flex-col items-center justify-center gap-10 md:flex-row lg:items-start">
         <Image
-          className="ml-10 aspect-[4/5] max-h-[300px] min-h-[400px]  min-w-[300px] select-none object-contain p-5"
+          className="aspect-[4/5] max-h-[300px] min-h-[400px] min-w-[300px] select-none object-contain p-5 md:ml-10"
           width={400}
           height={400}
           src={item.image_url}
@@ -56,11 +56,13 @@ export default async function Item({ params }: ItemProps) {
             {item.volume}
             {item.volume_unit}, {item.alcohol_volume}%
           </p>
-          <div>
+          <div className="w-40 pt-5">
             <CartButton
-              quantity={item.quantity}
+              id={item.id}
+              maxQuantity={item.quantity}
               price={item.price}
               currency={item.currency}
+              priceSize="large"
             />
           </div>
           <p className="pt-5 text-muted-foreground">{item.description}</p>

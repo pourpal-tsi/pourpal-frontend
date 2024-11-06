@@ -2,95 +2,155 @@
 import { Button } from "@/components/ui/button";
 import { Minus, Plus } from "lucide-react";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
+import { twMerge } from "tailwind-merge";
+import { useCart } from "@/context/cart-context";
 
 interface CartButtonProps {
-  quantity: number | string;
+  id: string;
   price: number | string;
   currency: string;
+  priceSize?: "small" | "large";
+  maxQuantity: number;
 }
 
 export default function CartButton({
-  quantity,
+  id,
   price,
   currency,
+  priceSize,
+  maxQuantity,
 }: CartButtonProps) {
   const [amount, setAmount] = useState(1);
-  const [total, setTotal] = useState(price);
   const [totalWithDiscount, setTotalWithDiscount] = useState(price);
+  const [isAdding, setIsAdding] = useState(false);
+  const {
+    cart,
+    handleIncrementItem,
+    handleDecrementItem,
+    handleRemoveItem,
+    handleUpdateItemQuantity,
+  } = useCart();
 
-  quantity = Number(quantity);
+  const cartItem = cart.cart_items?.find((item) => item.item_id === id);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    if (cartItem) {
+      setAmount(cartItem.quantity);
+      setIsAdding(true);
+    } else {
+      setAmount(1);
+      setIsAdding(false);
+    }
+  }, [cartItem]);
+
   price = Number(price);
 
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   const handleIncrement = () => {
-    if (quantity === amount) return;
-    setAmount(amount + 1);
+    if (amount < maxQuantity) {
+      setAmount((prevAmount) => prevAmount + 1);
+      handleIncrementItem(id);
+    }
   };
 
   const handleDecrement = () => {
     if (amount > 1) {
-      setAmount(amount - 1);
+      setAmount((prevAmount) => prevAmount - 1);
+      handleDecrementItem(id);
+    } else {
+      setIsAdding(false);
+      handleRemoveItem(id);
     }
   };
 
   const handleAmountChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     const numericValue = Math.floor(Number(value));
+
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+
     if (value === "" || numericValue <= 0) {
       setAmount(1);
       return;
     }
 
-    if (numericValue >= quantity) {
-      setAmount(quantity);
+    if (numericValue > maxQuantity) {
+      setAmount(maxQuantity);
+      timeoutRef.current = setTimeout(() => {
+        handleUpdateItemQuantity(id, maxQuantity);
+      }, 300);
     } else {
       setAmount(numericValue);
+      timeoutRef.current = setTimeout(() => {
+        handleUpdateItemQuantity(id, numericValue);
+      }, 300);
     }
   };
 
   useEffect(() => {
     const newPrice = (amount * price).toFixed(2);
     setTotalWithDiscount(newPrice);
-    setTotal(newPrice);
   }, [amount, price]);
 
   const handleFocus = () => {
-    if (inputRef.current) {
-      inputRef.current?.select();
-    }
+    inputRef.current?.select();
+  };
+
+  const handleAddToCart = () => {
+    setIsAdding(true);
+    handleIncrementItem(id);
   };
 
   return (
     <div>
-      <div className="flex gap-2.5 pt-5">
-        <div className="text-4xl font-semibold text-orange-600">
+      <div className="flex gap-2.5">
+        <div
+          className={twMerge(
+            "font-semibold text-orange-600",
+            priceSize === "large" ? "text-4xl" : "text-2xl",
+          )}
+        >
           {totalWithDiscount}
           {currency}
         </div>
-        <div className="text-muted-foreground line-through">
-          {total}
-          {currency}
-        </div>
       </div>
-      <div className="mt-3 flex select-none items-center gap-2.5">
-        <div className="flex gap-2 rounded-lg border p-1">
-          <Minus className="cursor-pointer pt-1.5" onClick={handleDecrement} />
-          <input
-            type="number"
-            ref={inputRef}
-            className="w-10 text-center text-2xl"
-            value={amount}
-            onChange={handleAmountChange}
-            onFocus={handleFocus}
-            onBlur={() => {
-              if (amount <= 0) setAmount(1);
-            }}
-            min="1"
-          />
-          <Plus className="cursor-pointer pt-1.5" onClick={handleIncrement} />
-        </div>
-        <Button className="px-10 py-5">Add to cart</Button>
+      <div className="mt-3 flex select-none items-center justify-center gap-2.5">
+        {isAdding ? (
+          <div className="flex h-10 gap-2 rounded-lg border bg-white">
+            <Minus
+              className="mt-1.5 cursor-pointer pl-2"
+              onClick={handleDecrement}
+            />
+            <input
+              type="number"
+              ref={inputRef}
+              className="w-[5.5rem] text-center text-2xl"
+              value={amount}
+              onChange={handleAmountChange}
+              onFocus={handleFocus}
+              onBlur={() => {
+                if (amount <= 0) {
+                  setAmount(1);
+                  handleUpdateItemQuantity(id, 1);
+                }
+              }}
+              min="1"
+              max={maxQuantity}
+            />
+            <Plus
+              className="mt-1.5 cursor-pointer pr-2"
+              onClick={handleIncrement}
+            />
+          </div>
+        ) : (
+          <Button className="px-10 py-5" onClick={handleAddToCart}>
+            Add to cart
+          </Button>
+        )}
       </div>
     </div>
   );

@@ -14,7 +14,7 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { AlertCircle, LogIn } from "lucide-react";
 import { RegisterForm } from "@/components/form/register-form";
 
-export default function Login() {
+export default function RegisterPage() {
   const [isError, setIsError] = useState<boolean>(false);
 
   return (
