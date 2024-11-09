@@ -155,6 +155,7 @@ export default function Cart() {
             Need a help?{" "}
             <a
               target="_blank"
+              rel="noreferrer"
               href="https://www.youtube.com/watch?v=ZkaHeck1KFY"
               className="underline"
             >
