@@ -73,7 +73,7 @@ export default function SortItems() {
         <SelectContent>
           <SelectGroup>
             <SelectLabel>Sort By</SelectLabel>
-            <SelectItem value={" "}>None</SelectItem>
+            <SelectItem value={" "}>Default</SelectItem>
             <SelectItem value="title">Title</SelectItem>
             <SelectItem value="price">Price</SelectItem>
           </SelectGroup>

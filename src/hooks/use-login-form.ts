@@ -8,7 +8,9 @@ import { userContext } from "@/context/user-context";
 
 const loginSchema = z.object({
   email: z.string().email(),
-  password: z.string().min(6),
+  password: z
+    .string()
+    .min(6, { message: "Password must be at least 6 characters" }),
 });
 
 type LoginForm = z.infer<typeof loginSchema>;

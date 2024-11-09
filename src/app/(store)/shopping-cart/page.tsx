@@ -105,7 +105,7 @@ export default function Cart() {
                 <TableRow className="hover:bg-white">
                   <TableCell
                     colSpan={5}
-                    className="py-[7.4rem] text-center text-2xl text-gray-400"
+                    className="py-[9.5rem] text-center text-2xl text-gray-400"
                   >
                     Your cart is empty
                   </TableCell>
@@ -154,6 +154,7 @@ export default function Cart() {
           <div className="text-center">
             Need a help?{" "}
             <a
+              target="_blank"
               href="https://www.youtube.com/watch?v=ZkaHeck1KFY"
               className="underline"
             >
