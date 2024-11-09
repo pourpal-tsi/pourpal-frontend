@@ -1,7 +1,7 @@
 "use server";
 import backend from "@/lib/client-config";
 import { cookies } from "next/headers";
-import { getItem } from "@/services/items";
+import { getItem, Item } from "@/services/items";
 
 export interface CartItem {
   item_id: string;
@@ -21,6 +21,11 @@ export interface CartContents {
   cart_id: string;
   cart_items: CartItem[];
   total_cart_price: number;
+}
+
+export interface CartItemResponse extends Item {
+  cart_quantity: number;
+  cart_total_price: number | string;
 }
 
 function getBearerToken(cartId: string): string {
@@ -119,7 +124,8 @@ export async function getCartItems(cart_items: CartItem[]) {
       const itemData = await getItem(cartItem.item_id);
       return {
         ...itemData,
-        quantity: cartItem.quantity,
+        cart_quantity: cartItem.quantity,
+        cart_total_price: cartItem.total_price.amount,
       };
     }),
   );

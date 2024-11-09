@@ -13,7 +13,9 @@ const registerSchema = z
       .string()
       .min(6, { message: "Password must be at least 6 characters long" })
       .regex(/\d/, { message: "Password must contain at least one digit" }),
-    passwordConfirmation: z.string().min(6),
+    passwordConfirmation: z
+      .string()
+      .min(6, { message: "Password must be at least 6 characters long" }),
     terms: z.boolean().refine((data) => data, {
       message: "You must agree to the terms of service",
     }),
