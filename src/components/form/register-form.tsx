@@ -121,7 +121,10 @@ export function RegisterForm({ setIsError }: RegisterFormProps) {
               </FormControl>
               <FormLabel className="pb-2 text-sm font-medium leading-none text-primary">
                 I agree to the{" "}
-                <Link href="/tos" className="text-primary underline">
+                <Link
+                  href="/terms-of-service"
+                  className="text-primary underline"
+                >
                   terms of service
                 </Link>
               </FormLabel>
