@@ -54,7 +54,6 @@ export default function RootLayout({
           <main className="w-full grow bg-gray-50 pt-[4.5rem]">{children}</main>
           <footer className="border-t bg-white py-4">
             <div className="container mx-auto flex flex-wrap items-center justify-between px-4">
-              {/* Left Section: Copyright and Social Icons */}
               <div className="flex items-center space-x-4">
                 <span className="text-sm text-gray-600">
                   &copy; {new Date().getFullYear()} Ragazzo Sporco
@@ -87,7 +86,6 @@ export default function RootLayout({
                 </div>
               </div>
 
-              {/* Right Section: Static Page Links */}
               <div className="flex space-x-6 text-sm text-gray-600 hover:text-gray-800">
                 <Link href="/about"> About Us </Link>
                 <Link href="/faq">FAQ</Link>
