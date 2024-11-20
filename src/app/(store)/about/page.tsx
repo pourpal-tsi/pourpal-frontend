@@ -10,7 +10,7 @@ import groupPhoto from "@/assets/group-photo.png";
 
 export default function About() {
   return (
-    <div className="flex min-h-screen flex-col items-center bg-gray-100 py-8">
+    <div className="flex h-full flex-col items-center py-10">
       <Card className="w-full max-w-2xl rounded-lg bg-white p-6 shadow-lg">
         <CardHeader>
           <Image
