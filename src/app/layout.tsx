@@ -4,6 +4,8 @@ import React from "react";
 import Navigation from "@/components/navigation/navigation";
 import { Poppins } from "next/font/google";
 import RootProvider from "@/app/providers";
+import Link from "next/link";
+import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -50,8 +52,50 @@ export default function RootLayout({
         <RootProvider>
           <Navigation />
           <main className="w-full grow bg-gray-50 pt-[4.5rem]">{children}</main>
-          <footer className="border-t text-center">
-            Ragazzo sporco copyright
+          <footer className="border-t bg-white py-4">
+            <div className="container mx-auto flex flex-wrap items-center justify-between px-4">
+              {/* Left Section: Copyright and Social Icons */}
+              <div className="flex items-center space-x-4">
+                <span className="text-sm text-gray-600">
+                  &copy; {new Date().getFullYear()} Ragazzo Sporco
+                </span>
+                <div className="flex space-x-3">
+                  <a
+                    href="https://www.facebook.com/elvis.placis"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-600 hover:text-gray-800"
+                  >
+                    <FaFacebook size={20} />
+                  </a>
+                  <a
+                    href="https://twitter.com/elonmusk"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-600 hover:text-gray-800"
+                  >
+                    <FaTwitter size={20} />
+                  </a>
+                  <a
+                    href="https://youtu.be/5tSvWqLmDYA?si=srpTalOESC2IM8nt&t=26"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-600 hover:text-gray-800"
+                  >
+                    <FaInstagram size={20} />
+                  </a>
+                </div>
+              </div>
+
+              {/* Right Section: Static Page Links */}
+              <div className="flex space-x-6 text-sm text-gray-600 hover:text-gray-800">
+                <Link href="/about"> About Us </Link>
+                <Link href="/faq">FAQ</Link>
+                <Link href="/contact">Contact</Link>
+                <Link href="/privacy-policy">Privacy Policy</Link>
+                <Link href="/terms-of-service">Terms of Service</Link>
+              </div>
+            </div>
           </footer>
         </RootProvider>
       </body>
