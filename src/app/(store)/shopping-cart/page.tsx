@@ -149,9 +149,15 @@ export default function Cart() {
               €
             </span>
           </div>
-
-          <Button className="mt-4 w-full rounded-lg">Checkout</Button>
-          <div className="text-center">
+          <Link href="/checkout">
+            <Button
+              className="mt-4 w-full rounded-lg"
+              disabled={cart.cart_items.length <= 0}
+            >
+              Checkout
+            </Button>
+          </Link>
+          <div className="truncate text-center">
             Need a help?{" "}
             <a
               target="_blank"

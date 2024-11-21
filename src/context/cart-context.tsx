@@ -11,6 +11,7 @@ import {
 interface CartContextType {
   cart: CartContents;
   fetchCart: () => Promise<void>;
+  isCartEmpty: () => boolean;
   handleIncrementItem: (itemId: string) => Promise<void>;
   handleDecrementItem: (itemId: string) => Promise<void>;
   handleUpdateItemQuantity: (itemId: string, quantity: number) => Promise<void>;
@@ -29,6 +30,7 @@ const CartContext = createContext<CartContextType>({
     total_cart_price: 0,
   },
   fetchCart: async () => {},
+  isCartEmpty: () => false,
   handleIncrementItem: async () => {},
   handleDecrementItem: async () => {},
   handleUpdateItemQuantity: async () => {},
@@ -55,6 +57,10 @@ export const CartProvider = ({ children }: CartProviderProps) => {
   useEffect(() => {
     fetchCart();
   }, []);
+
+  const isCartEmpty = (): boolean => {
+    return cart.cart_items.length === 0;
+  };
 
   const fetchCart = async () => {
     try {
@@ -107,6 +113,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
 
   const value = {
     cart,
+    isCartEmpty,
     fetchCart,
     handleIncrementItem,
     handleDecrementItem,
