@@ -17,8 +17,7 @@ export default function Navigation() {
   }, []);
 
   return (
-    <header
-      className="fixed inset-x-0 top-0 z-50 flex min-h-[73px] items-center justify-between gap-2 border-b bg-white/90 px-2 backdrop-blur-lg">
+    <header className="fixed inset-x-0 top-0 z-50 flex min-h-[73px] items-center justify-between gap-2 border-b bg-white/90 px-2 backdrop-blur-lg">
       {/* APPLICATION NAME */}
       <span className="grow p-1 text-xl text-foreground">
         <Link
