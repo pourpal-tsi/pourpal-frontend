@@ -49,21 +49,21 @@ export default async function CataloguePage({
                   </div>
                 </div>
               </Link>
-              <p className="overflow-hidden text-ellipsis text-nowrap text-center font-[500]">
+              <p className="overflow-hidden text-ellipsis text-nowrap pt-2 text-center font-[500]">
                 {item.title}
               </p>
               <div className="flex gap-2.5">
-                <div className="overflow-hidden text-ellipsis text-nowrap text-2xl font-semibold text-orange-600">
+                <div className="grow overflow-hidden text-ellipsis text-nowrap text-2xl font-semibold">
                   {item.price}
                   {item.currency}
                   <span className="text-[0.75rem] font-light text-primary">
                     /pcs
                   </span>
                 </div>
-                <div className="grow text-muted-foreground line-through">
-                  {item.price}
-                  {item.currency}
-                </div>
+                {/*<div className="grow text-muted-foreground line-through">*/}
+                {/*  {item.price}*/}
+                {/*  {item.currency}*/}
+                {/*</div>*/}
                 <AddToCart id={item.id} />
               </div>
             </div>

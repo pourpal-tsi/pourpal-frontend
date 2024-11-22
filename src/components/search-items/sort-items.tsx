@@ -68,7 +68,7 @@ export default function SortItems() {
     <div className="flex justify-center pt-2">
       <Select onValueChange={handleSortChange} defaultValue={currentSortBy}>
         <SelectTrigger className="h-[2.6rem] w-[140px] bg-white">
-          <SelectValue placeholder="Select sort by" />
+          <SelectValue placeholder="Sort by" />
         </SelectTrigger>
         <SelectContent>
           <SelectGroup>
