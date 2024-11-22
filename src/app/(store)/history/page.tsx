@@ -23,7 +23,7 @@ export default async function OrderHistory() {
             <TableHeader>
               <TableRow className="border-b-2 border-gray-200 hover:bg-white">
                 <TableHead className="px-4 py-3 text-left text-lg font-semibold text-gray-700">
-                  Order Id
+                  Order Number
                 </TableHead>
                 <TableHead className="px-4 py-3 text-left text-lg font-semibold text-gray-700">
                   Placement Time
@@ -44,7 +44,7 @@ export default async function OrderHistory() {
                     className="cursor-pointer transition-all duration-300 hover:bg-gray-100"
                   >
                     <TableCell className="px-4 py-3 text-sm font-medium">
-                      {order.order_id}
+                      {order.order_number}
                     </TableCell>
                     <TableCell className="px-4 py-3 text-sm font-medium">
                       {formatRelativeTime(order.created_at)}
