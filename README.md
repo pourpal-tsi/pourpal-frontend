@@ -1,3 +1,3 @@
 # PourPal Frontend
 
-Under construction! 🧐🤓
+Under construction! 🧐

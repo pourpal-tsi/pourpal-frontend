@@ -4,7 +4,7 @@ import {
   CardTitle,
   CardContent,
   CardFooter,
-} from "@/components/ui/card"; // shadcn/ui card component
+} from "@/components/ui/card";
 import Image from "next/image";
 import groupPhoto from "@/assets/group-photo.png";
 
