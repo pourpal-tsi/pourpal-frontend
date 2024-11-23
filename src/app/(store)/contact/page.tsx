@@ -56,7 +56,7 @@ export default function Contact() {
             Disclaimer: This is a study project created by university students
             for an assignment. The contact information is provided for
             illustration purposes and does not represent actual contact details
-            for Pourpal project.
+            for PourPal project.
           </p>
         </CardFooter>
       </Card>

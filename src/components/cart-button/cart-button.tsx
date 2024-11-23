@@ -110,7 +110,7 @@ export default function CartButton({
       <div className="flex gap-2.5">
         <div
           className={twMerge(
-            "font-semibold text-orange-600",
+            "font-semibold",
             priceSize === "large" ? "text-4xl" : "text-2xl",
           )}
         >

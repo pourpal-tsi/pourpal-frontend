@@ -51,17 +51,17 @@ export function CarouselItems({ items }: CarouselItemsProps) {
                     {item.title}
                   </p>
                   <div className="mt-2 flex items-center justify-center gap-2.5">
-                    <div className="overflow-hidden text-ellipsis text-nowrap text-2xl font-semibold text-orange-600">
+                    <div className="overflow-hidden text-ellipsis text-nowrap text-2xl font-semibold">
                       {item.price}
                       {item.currency}
                       <span className="text-[0.75rem] font-light text-primary">
                         /pcs
                       </span>
                     </div>
-                    <div className="grow text-muted-foreground line-through">
-                      {item.price}
-                      {item.currency}
-                    </div>
+                    {/*<div className="grow text-muted-foreground line-through">*/}
+                    {/*  {item.price}*/}
+                    {/*  {item.currency}*/}
+                    {/*</div>*/}
                   </div>
                 </CardContent>
               </Card>
