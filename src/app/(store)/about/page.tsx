@@ -1,24 +1,20 @@
 import {
   Card,
-  CardHeader,
-  CardTitle,
   CardContent,
   CardFooter,
+  CardHeader,
+  CardTitle,
 } from "@/components/ui/card";
-import Image from "next/image";
-import groupPhoto from "@/assets/group-photo.png";
 
 export default function About() {
   return (
     <div className="flex h-full flex-col items-center py-10">
       <Card className="w-full max-w-2xl rounded-lg bg-white p-6 shadow-lg">
         <CardHeader>
-          <Image
-            src={groupPhoto}
+          <img
+            src="https://les-raccourcis-clavier.fr/wp-content/uploads/2019/04/emoji-monocle.png"
             alt="Group photo"
-            width={100}
-            height={100}
-            className="mx-auto rounded-full"
+            className="mx-auto rounded-full pl-1 w-64"
           />
         </CardHeader>
 

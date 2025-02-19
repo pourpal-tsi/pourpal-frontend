@@ -1,5 +1,4 @@
 import * as React from "react";
-import Image from "next/image";
 import Link from "next/link";
 
 import { Card, CardContent } from "@/components/ui/card";
@@ -34,7 +33,7 @@ export function CarouselItems({ items }: CarouselItemsProps) {
                 <CardContent>
                   <Link href={`/catalogue/${item.id}`}>
                     <div className="relative max-h-[300px] rounded-xl bg-white duration-300">
-                      <Image
+                      <img
                         className="mx-auto aspect-[4/5] max-h-[300px] select-none object-contain p-10 duration-300 active:scale-110 md:hover:scale-105"
                         width={200}
                         height={500}
